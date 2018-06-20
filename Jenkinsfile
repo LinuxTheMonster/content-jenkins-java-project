@@ -56,25 +56,12 @@ pipeline {
 
     stage('deploy on slave-FT') {
       agent {
-        label 'slave1'
+        label 'master'
       }
 
       steps {
         sh "wget http://ec2-34-205-127-163.compute-1.amazonaws.com/rectangle/all/rectangle_${env.BUILD_NUMBER}.jar"
         sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 5 6"
-      }
-    }
-
-    stage("Test on Ubuntu") {
-      agent {
-        docker {
-              image 'myubuntu:latest'
-              label 'docker'
-          }
-      }
-      steps {
-        sh "wget http://ec2-34-205-127-163.compute-1.amazonaws.com/rectangle/all/rectangle_${env.BUILD_NUMBER}.jar"
-        sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 2 4"
       }
     }
 
