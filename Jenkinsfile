@@ -43,7 +43,7 @@ pipeline {
 
     }
 
-    stage('deploy-tomcat') {
+    /*stage('deploy-tomcat') {
       agent {
         label 'master'
       }
@@ -63,7 +63,7 @@ pipeline {
         sh "wget http://ec2-34-205-127-163.compute-1.amazonaws.com/rectangle/all/rectangle_${env.BUILD_NUMBER}.jar"
         sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 5 6"
       }
-    }
+    }*/
 
   }
 
